@@ -1,12 +1,38 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-  <section class="inicio">
-    <h2>Bienvenido a El Totem</h2>
-    <p>Explorá cartas, forritos y rituales digitales con identidad propia.</p>
+<section class="hero">
+  <h2>Invocá tu rareza</h2>
+  <p>Bienvenido a El Totem, donde cada carta tiene alma y cada usuario su clan.</p>
+  <a href="#" class="btn">Explorar productos</a>
+</section>
 
-    <div class="botones">
-
+<section class="productos">
+  <h3>Productos destacados</h3>
+  <div class="grid">
+    <div class="carta">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 1">
+      <h4>Forrito Místico</h4>
+      <p>Rareza: Épica</p>
     </div>
-  </section>
+    <!-- Repetir para más cartas -->
+  </div>
+</section>
+
+<section class="clanes">
+  <h3>Clanes Totem</h3>
+  <div class="clan-lista">
+    <div class="clan">
+      <h4>Clan Solar</h4>
+      <p>Conectá con la energía creativa</p>
+    </div>
+    <!-- Más clanes -->
+  </div>
+</section>
+
+<section class="rituales">
+  <h3>Rituales recientes</h3>
+  <blockquote>“Desde que me uní al Totem, cada diseño tiene alma.”</blockquote>
+</section>
 {% endblock %}
+
