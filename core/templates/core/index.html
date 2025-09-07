@@ -1,38 +1,61 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block content %}
-<section class="hero">
-  <h2>Invocá tu rareza</h2>
-  <p>Bienvenido a El Totem, donde cada carta tiene alma y cada usuario su clan.</p>
-  <a href="#" class="btn">Explorar productos</a>
-</section>
 
-<section class="productos">
-  <h3>Productos destacados</h3>
-  <div class="grid">
+<section class="productos-flex">
+  <h2>🌀 Productos Totem</h2>
+  <div class="contenedor-cartas">
     <div class="carta">
       <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 1">
-      <h4>Forrito Místico</h4>
-      <p>Rareza: Épica</p>
+      <p>Fornito Místico</p>
     </div>
-    <!-- Repetir para más cartas -->
+    <div class="carta">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 2">
+      <p>Amuleto Solar</p>
+    </div>
+    <div class="carta">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 3">
+      <p>Sticker Totémico</p>
+    </div>
   </div>
 </section>
 
-<section class="clanes">
-  <h3>Clanes Totem</h3>
-  <div class="clan-lista">
-    <div class="clan">
-      <h4>Clan Solar</h4>
-      <p>Conectá con la energía creativa</p>
+
+<section class="publicaciones-usuarios">
+  <h2>🗣️ ÚLTIMAS PUBLICACIONES DE USUARIOS</h2>
+  <div class="grid">
+    <div class="post">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 1">
+      <p>“Cambio forrito lunar por solar”</p>
     </div>
-    <!-- Más clanes -->
+    <div class="post">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 2">
+      <p>“¿Alguien tiene edición Fósil?”</p>
+    </div>
+    <div class="post">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 3">
+      <p>“Mi ritual de diseño Totem”</p>
+    </div>
   </div>
 </section>
 
-<section class="rituales">
-  <h3>Rituales recientes</h3>
-  <blockquote>“Desde que me uní al Totem, cada diseño tiene alma.”</blockquote>
+<section class="noticias-destacadas">
+  <h2>🔥 LO MÁS DESTACADO DEL MES</h2>
+  <div class="grid">
+    <div class="noticia">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 1">
+      <p>El Totem aparece en revista de diseño</p>
+    </div>
+    <div class="noticia">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 2">
+      <p>Nuevo clan digital en desarrollo</p>
+    </div>
+    <div class="noticia">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 3">
+      <p>Forrito edición limitada agotado</p>
+    </div>
+  </div>
 </section>
+
 {% endblock %}
-
