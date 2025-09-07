@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Totem</title>
+  <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
+</head>
+<body>
+  <header>
+    <h1>🌀 El Totem</h1>
+<nav>
+  <ul>
+    <li><a href="{% url 'index' %}">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="#">Foro</a></li>
+  </ul>
+</nav>
+
+  </header>
+
+  <main>
+    {% block content %}
+    <!-- Aquí se insertará el contenido de cada página -->
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 El Totem — Invocá tu rareza, conectá con tu clan.</p>
+  </footer>
+</body>
+</html>
