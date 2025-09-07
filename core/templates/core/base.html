@@ -5,19 +5,41 @@
   <meta charset="UTF-8">
   <title>El Totem</title>
   <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
+  
 </head>
 <body>
-  <header>
-    <h1>🌀 El Totem</h1>
-<nav>
-  <ul>
-    <li><a href="{% url 'index' %}">Inicio</a></li>
-    <li><a href="#">Productos</a></li>
-    <li><a href="#">Foro</a></li>
-  </ul>
-</nav>
 
-  </header>
+<div class="topbar">
+    <div class="logo">
+    <img src="{% static 'core/img/eltotem_logo.png' %}" alt="El Totem Logo">
+    <h1>El Totem</h1>
+    </div>
+  <div class="search-container">
+    <input type="text" placeholder="Buscar...">
+  </div>
+  <div class="user-actions">
+    <a href="#">Ingresar / Registrarse</a>
+    <a href="#">🛒 Carrito</a>
+    <!-- Panel Admin solo visible para admin en el futuro -->
+    {% if user.is_staff %}
+      <a href="#">⚙️ Panel Admin</a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- 🧭 Barra de navegación principal -->
+<header class="navbar">
+
+  <nav class="nav-links">
+    <a href="#">Inicio</a>
+    <a href="#">Productos</a>
+    <a href="#">Accesorios</a>
+    <a href="#">Preventa</a>
+    <a href="#">Foro</a>
+    <a href="#">Noticias</a>
+    <a href="#">Únete</a>
+  </nav>
+</header>
 
   <main>
     {% block content %}
@@ -26,7 +48,9 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 El Totem — Invocá tu rareza, conectá con tu clan.</p>
+    <p>&copy; 2025 El Totem — Invoca tu rareza, conecta con tu clan.</p>
   </footer>
 </body>
 </html>
+
+
