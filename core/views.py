@@ -9,6 +9,6 @@ def index(request):
 #Tercer paso es agregar 'core' en settings.py de Eltotem en la parte de INSTALLED_APPS
 
 # Ahora procedemos a hacer la view de registro:
-def registro_view(request):
+def registrarse_view(request):
     return render(request, 'core/registrarse.html')
 #Luego, procedemos a agregarlo al pattern en urls.py de la aplicación, en este caso, core
