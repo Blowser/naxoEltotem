@@ -1,9 +1,176 @@
+/* 🌄 Fondo y estilo base */
 body {
   background-image: url("../img/eltotem_tema_claro.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  color: #222; /* texto oscuro para tema claro */
+  color: #222;
   font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔝 Topbar funcional */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fbeec1;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  box-shadow: 0 0.0625rem 0.25rem rgba(0,0,0,0.1);
+}
+
+.search-container input {
+  padding: 0.4rem 0.8rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.user-actions a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+.user-actions a:hover {
+  color: #d35400;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.logo img {
+  height: 7vw;         /* Escala con el ancho de pantalla */
+  max-height: 6rem;    /* No se pasa de 96px */
+}
+
+.logo h1 {
+  font-size: 2.2rem;
+  color: #d35400;
+  margin: 0;
+}
+
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdf6e3;
+  padding: 1rem 2rem;
+  box-shadow: 0 0.125rem 0.375rem rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: #d35400;
+}
+
+
+/* 🧩 Layout flexible para cartas */
+.grid, .contenedor-cartas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* 🃏 Estilo de cartas y publicaciones */
+.card, .post, .noticia, .carta {
+  width: 20vw;
+  max-width: 12rem;
+  text-align: center;
+  background: #fff8e1;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.375rem rgba(0,0,0,0.1);
+  padding: 1rem;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+.card:hover, .carta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.2);
+}
+
+.card img, .post img, .noticia img, .carta img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 🧙‍♂️ Separación entre secciones */
+section {
+  margin: 2.5rem 0;
+  padding: 1.25rem;
+}
+
+/* 🎨 Colores de fondo por sección */
+.ultimos-productos {
+  background-color: #fff8e1;
+}
+.publicaciones-usuarios {
+  background-color: #f0f8ff;
+}
+.noticias-destacadas {
+  background-color: #ffe4e1;
+}
+.productos-flex {
+  background-color: #fff8e1;
+  min-height: 60vh;
+}
+
+/* 🧠 Títulos de sección */
+section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: #d35400;
+  text-align: center;
+}
+
+/* 📱 Responsividad Totem */
+@media (max-width: 600px) {
+  .carta, .card, .post, .noticia {
+    width: 80vw;
+    max-width: none;
+  }
+
+  .navbar, .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+  }
+
+  .logo img {
+    height: 4rem;
+  }
+
+  section h2 {
+    font-size: 1.25rem;
+  }
 }
