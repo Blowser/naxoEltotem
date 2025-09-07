@@ -18,7 +18,7 @@
     <input type="text" placeholder="Buscar...">
   </div>
   <div class="user-actions">
-<a href="{% url 'registro' %}">Ingresar / Registrarse</a>
+<a href="{% url 'registrarse' %}">Ingresar / Registrarse</a>
     <a href="#">🛒 Carrito</a>
     <!-- Panel Admin solo visible para admin en el futuro -->
     {% if user.is_staff %}
