@@ -7,3 +7,8 @@ def index(request):
 # Se define el index para que sea la página principal, este será nuestra página de inicio de la pagina web aquí, en views.py
 #El segundo paso será crear la url en url.py tanto de core como de Eltotem, y se crean las rutas
 #Tercer paso es agregar 'core' en settings.py de Eltotem en la parte de INSTALLED_APPS
+
+# Ahora procedemos a hacer la view de registro:
+def registro_view(request):
+    return render(request, 'core/registro.html')
+#Luego, procedemos a agregarlo al pattern en urls.py de la aplicación, en este caso, core
