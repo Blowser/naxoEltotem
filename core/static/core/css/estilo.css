@@ -1,0 +1,9 @@
+body {
+  background-image: url("../img/eltotem_tema_claro.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: #222; /* texto oscuro para tema claro */
+  font-family: 'Segoe UI', sans-serif;
+}
