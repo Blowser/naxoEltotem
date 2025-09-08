@@ -1,27 +1,35 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block content %}
-<section class="login-usuario">
-  <h2>🔐 Ingresar al Clan Totem</h2>
-  {% if error %}
-  <p style="color: red; text-align: center;">{{ error }}</p>
-{% endif %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
+{% endblock %}
 
-  <form method="POST">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="username">Nombre de usuario</label>
-      <input type="text" name="username" id="username" required>
-    </div>
-    <div class="form-group">
-      <label for="password">Contraseña</label>
-      <input type="password" name="password" id="password" required>
-    </div>
-    <button type="submit">Ingresar</button>
-  </form>
-  <p style="text-align:center; margin-top:1rem;">
-    ¿No tienes cuenta? <a href="{% url 'registrarse' %}">Regístrate aquí</a>
-  </p>
+{% block content %}
+<section class="fondo-registro formulario-ingreso">
+
+  <div class="contenedor-formulario">
+    <h2>🔐 Ingresar al Clan Totem</h2>
+    {% if error %}
+      <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      <div class="bloque-campo">
+        <label for="username">Nombre de usuario</label>
+        <input type="text" name="username" id="username" class="campo-runa" required>
+      </div>
+      <div class="bloque-campo">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" class="campo-runa" required>
+      </div>
+      <button type="submit" class="boton-invocacion">Ingresar</button>
+    </form>
+    <p>
+        <a href="{% url 'registrarse' %}" class="enlace-registro">¿No tienes cuenta? Regístrate aquí</a>
+    </p>
+
+  </div>
 </section>
+
 {% endblock %}
