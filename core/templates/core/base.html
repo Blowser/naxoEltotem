@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Totem</title>
+  <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
+  {% block extra_css %}{% endblock %}
+
+
+  
+</head>
+<body>
+
+<div class="topbar">
+    <div class="logo">
+    <img src="{% static 'core/img/eltotem_logo.png' %}" alt="El Totem Logo">
+    <h1>El Totem</h1>
+    </div>
+  <div class="search-container">
+    <input type="text" placeholder="Buscar...">
+  </div>
+  <div class="user-actions">
+<a href="{% url 'login' %}">Ingresar / Registrarse</a>
+    <a href="#">🛒 Carrito</a>
+    <!-- Panel Admin solo visible para admin en el futuro -->
+    {% if user.is_staff %}
+      <a href="#">⚙️ Panel Admin</a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- 🧭 Barra de navegación principal -->
+<header class="navbar">
+
+  <nav class="nav-links">
+    <a href="{% url 'index' %}">Inicio</a>
+    <a href="#">Productos</a>
+    <a href="#">Accesorios</a>
+    <a href="#">Preventa</a>
+    <a href="#">Foro</a>
+    <a href="#">Noticias</a>
+    <a href="#">Únete</a>
+  </nav>
+</header>
+
+  <main>
+    {% block content %}
+    <!-- Aquí se insertará el contenido de cada página -->
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 El Totem — Invoca tu rareza, conecta con tu clan.</p>
+  </footer>
+</body>
+</html>
+
+

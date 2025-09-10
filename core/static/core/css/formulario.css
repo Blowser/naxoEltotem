@@ -1,0 +1,115 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.fondo-registro {
+    background-image: url("../img/eltotem_tema_oscuro.png");
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(1.1); /* Aumenta la luz */
+}
+
+
+
+.contenedor-formulario {
+.contenedor-formulario {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(255, 140, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(255, 140, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+h2 {
+    color: #1E90FF;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.bloque-campo {
+    margin-bottom: 20px;
+}
+
+.bloque-campo label {
+    display: block;
+    font-weight: bold;
+    color: #1E90FF;
+    margin-bottom: 8px;
+}
+
+.campo-runa {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #1a1a1a;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
+}
+
+.campo-runa:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 5px #FFD700;
+    outline: none;
+}
+
+.boton-invocacion {
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.boton-invocacion:hover {
+    opacity: 0.85;
+}
+.formulario-ingreso .contenedor-formulario {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.formulario-registro .contenedor-formulario {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); /* Brillo dorado ritual */
+}
+
+.formulario-registro h2 {
+    color: #ffdd00; /* Amarillo más vibrante para el título */
+}
+.enlace-registro {
+    color: #ffdd00; /* Amarillo vibrante */
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    display: block;
+    margin-top: 1.5rem;
+    text-decoration: none;
+}
+
+.enlace-registro:hover {
+    text-decoration: underline;
+    color: #ffd700;
+}

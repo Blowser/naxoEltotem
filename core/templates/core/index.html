@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="productos-flex">
+  <h2>🌀 Productos Totem</h2>
+  <div class="contenedor-cartas">
+    <div class="carta">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 1">
+      <p>Fornito Místico</p>
+    </div>
+    <div class="carta">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 2">
+      <p>Amuleto Solar</p>
+    </div>
+    <div class="carta">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 3">
+      <p>Sticker Totémico</p>
+    </div>
+  </div>
+</section>
+
+<section class="publicaciones-usuarios">
+  <h2>🗣️ ÚLTIMAS PUBLICACIONES DE USUARIOS</h2>
+  <div class="grid">
+    <div class="post">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 1">
+      <p>“Cambio forrito lunar por solar”</p>
+    </div>
+    <div class="post">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 2">
+      <p>“¿Alguien tiene edición Fósil?”</p>
+    </div>
+    <div class="post">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 3">
+      <p>“Mi ritual de diseño Totem”</p>
+    </div>
+  </div>
+</section>
+
+<section class="noticias-destacadas">
+  <h2>🔥 LO MÁS DESTACADO DEL MES</h2>
+  <div class="grid">
+    <div class="noticia">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 1">
+      <p>El Totem aparece en revista de diseño</p>
+    </div>
+    <div class="noticia">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 2">
+      <p>Nuevo clan digital en desarrollo</p>
+    </div>
+    <div class="noticia">
+      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 3">
+      <p>Forrito edición limitada agotado</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

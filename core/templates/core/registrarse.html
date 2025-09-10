@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<section class="fondo-registro formulario-registro">
+  <div class="contenedor-formulario">
+    <h2>🧙‍♂️ Únete al Clan Totem</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="bloque-campo">
+        <label for="username">Nombre de usuario</label>
+        <input type="text" name="username" id="username" class="campo-runa" required>
+      </div>
+      <div class="bloque-campo">
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="email" id="email" class="campo-runa" required>
+      </div>
+      <div class="bloque-campo">
+        <label for="password1">Contraseña</label>
+        <input type="password" name="password1" id="password1" class="campo-runa" required>
+      </div>
+      <div class="bloque-campo">
+        <label for="password2">Confirmar contraseña</label>
+        <input type="password" name="password2" id="password2" class="campo-runa" required>
+      </div>
+      <div class="bloque-campo">
+        <label for="direccion">Dirección</label>
+          <input type="text" name="direccion" id="direccion" class="campo-runa" required>
+      </div>
+      <button type="submit" class="boton-invocacion">Registrarse</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
