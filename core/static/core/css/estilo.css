@@ -185,15 +185,76 @@ section h2 {
 
 /* 📱 Responsive */
 @media (max-width: 600px) {
-  .card {
+  /* 🃏 Cartas y publicaciones */
+  .card, .post, .noticia, .carta {
     max-width: 40vw;
     width: 100%;
     margin: 0 auto;
     padding: 1.5rem;
+    font-size: 0.85rem;
   }
- footer {
+
+  /* 🔝 Topbar */
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .logo {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .user-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .user-actions a,
+  #toggle-modo {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  /* 🧭 Navbar */
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 🧙‍♂️ Footer */
+  footer {
     font-size: 0.8rem;
     padding: 1rem;
-  } 
+    text-align: center;
+  }
+
+  /* 🧠 Títulos de sección */
+  section h2 {
+    font-size: 1.25rem;
+  }
 }
+
 
