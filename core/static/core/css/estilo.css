@@ -88,13 +88,7 @@ body {
   color: #d35400;
 }
 
-/* 🧩 Layout flexible para cartas */
-.grid, .contenedor-cartas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
+
 
 /* 🃏 Estilo de cartas y publicaciones */
 .card, .post, .noticia, .carta {
@@ -149,33 +143,13 @@ section h2 {
   text-align: center;
 }
 
-/* 📱 Responsividad Totem */
+/* 🃏 Media query aplican estilos condicionales según el tamaño de pantalla*/
 @media (max-width: 600px) {
-  .carta, .card, .post, .noticia {
-    width: 80vw;
-    max-width: none;
-  }
-
-  .navbar, .topbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-links a {
-    margin: 0.5rem 0;
-  }
-
-  .logo img {
-    height: 5rem;
-  }
-
-  section h2 {
-    font-size: 1.25rem;
+  .card {
+    max-width: 40vw;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    
   }
 }
-
