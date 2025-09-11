@@ -1,17 +1,56 @@
-/* 🌄 Fondo y estilo base */
+/* 🌄 Fondo base y tipografía */
 body {
-  background-image: url("../img/eltotem_tema_claro.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  color: #222;
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* 🔝 Topbar funcional */
+/* 🌞 Modo claro */
+body.modo-claro {
+  background-image: url("../img/eltotem_tema_claro.png");
+  color: #222;
+}
+.modo-claro .form-label,
+.modo-claro .nav-links a,
+.modo-claro .user-actions a {
+  color: #d68100;
+}
+
+/* 🌒 Modo oscuro */
+body.modo-oscuro {
+  background-image: url("../img/eltotem_tema_oscuro.png");
+  color: #ffdd00;
+}
+.modo-oscuro .form-label,
+.modo-oscuro .nav-links a,
+.modo-oscuro .user-actions a {
+  color: #018f4d;
+}
+.modo-oscuro .topbar {
+  background-color: #1a1a1a;
+  box-shadow: 0 0.125rem 0.375rem rgba(255, 215, 0, 0.2);
+}
+.modo-oscuro .user-actions a:hover {
+  color: #ffd700;
+}
+.modo-oscuro .search-container input {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #ffdd00;
+}
+.modo-oscuro .navbar {
+  background-color: #111;
+  box-shadow: 0 0.125rem 0.375rem rgba(255, 215, 0, 0.2);
+}
+.modo-oscuro .nav-links a:hover {
+  color: #ffd700;
+}
+
+/* 🔝 Topbar */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -21,25 +60,22 @@ body {
   font-size: 0.9rem;
   box-shadow: 0 0.0625rem 0.25rem rgba(0,0,0,0.1);
 }
-
 .search-container input {
   padding: 0.4rem 0.8rem;
-  border: 0.0625rem solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 0.3rem;
   font-size: 0.9rem;
 }
-
 .user-actions a {
   margin-left: 1.5rem;
   text-decoration: none;
-  color: #333;
   font-weight: 600;
 }
 .user-actions a:hover {
   color: #d35400;
 }
 
-/* 🧭 Barra de navegación principal */
+/* 🧭 Navbar */
 .navbar {
   display: flex;
   flex-direction: column;
@@ -51,8 +87,24 @@ body {
   top: 0;
   z-index: 1000;
 }
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: #d35400;
+}
 
-/* 🪶 Logo horizontal con título */
+/* 🪶 Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -69,28 +121,7 @@ body {
   line-height: 1;
 }
 
-/* 🔗 Menú de navegación centrado */
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-.nav-links a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-.nav-links a:hover {
-  color: #d35400;
-}
-
-
-
-/* 🃏 Estilo de cartas y publicaciones */
+/* 🃏 Cartas y publicaciones */
 .card, .post, .noticia, .carta {
   width: 20vw;
   max-width: 12rem;
@@ -106,7 +137,6 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.2);
 }
-
 .card img, .post img, .noticia img, .carta img {
   width: 100%;
   height: auto;
@@ -114,14 +144,21 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* 🧙‍♂️ Separación entre secciones */
+/* 🧙‍♂️ Secciones */
 section {
   margin: 2rem 0;
   padding: 1.25rem;
 }
+section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: #d35400;
+  text-align: center;
+}
 
-/* 🎨 Colores de fondo por sección */
-.ultimos-productos {
+/* 🎨 Colores por sección */
+.ultimos-productos,
+.productos-flex {
   background-color: #fff8e1;
 }
 .publicaciones-usuarios {
@@ -131,25 +168,15 @@ section {
   background-color: #ffe4e1;
 }
 .productos-flex {
-  background-color: #fff8e1;
   margin-bottom: 1rem;
 }
 
-/* 🧠 Títulos de sección */
-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.25rem;
-  color: #d35400;
-  text-align: center;
-}
-
-/* 🃏 Media query aplican estilos condicionales según el tamaño de pantalla*/
+/* 📱 Responsive */
 @media (max-width: 600px) {
   .card {
     max-width: 40vw;
     width: 100%;
     margin: 0 auto;
     padding: 1.5rem;
-    
   }
 }
