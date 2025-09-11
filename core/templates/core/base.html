@@ -14,7 +14,8 @@
 
   
 </head>
-<body>
+<body class="modo-oscuro">
+
 
 <div class="topbar">
     <div class="logo">
@@ -31,6 +32,7 @@
     {% if user.is_staff %}
       <a href="#">⚙️ Panel Admin</a>
     {% endif %}
+    <button id="toggle-modo" class="btn btn-sm btn-outline-warning">🌓 Cambiar modo</button>
   </div>
 </div>
 
@@ -57,6 +59,30 @@
   <footer>
     <p>&copy; 2025 El Totem — Invoca tu rareza, conecta con tu clan.</p>
   </footer>
+  <script>
+  const toggleBtn = document.getElementById('toggle-modo');
+  const body = document.body;
+
+  // Cargar modo guardado
+  const modoGuardado = localStorage.getItem('modo');
+  if (modoGuardado) {
+    body.classList.remove('modo-claro', 'modo-oscuro');
+    body.classList.add(modoGuardado);
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (body.classList.contains('modo-claro')) {
+      body.classList.remove('modo-claro');
+      body.classList.add('modo-oscuro');
+      localStorage.setItem('modo', 'modo-oscuro');
+    } else {
+      body.classList.remove('modo-oscuro');
+      body.classList.add('modo-claro');
+      localStorage.setItem('modo', 'modo-claro');
+    }
+  });
+</script>
+
 </body>
 </html>
 
