@@ -14,33 +14,24 @@
 <body class="modo-oscuro">
 
 
-  <div class="topbar">
-    <div class="logo">
-      <img src="{% static 'core/img/eltotem_logo.png' %}" alt="El Totem Logo">
-      <h1>El Totem</h1>
-    </div>
-    <div class="search-container">
-      <input type="text" placeholder="Buscar...">
-    </div>
-    <div class="user-actions">
-      <a href="{% url 'login' %}">Ingresar / Registrarse</a>
-      <a href="#">🛒 Carrito</a>
-      {% if user.is_staff %}
-        <a href="#">⚙️ Panel Admin</a>
-      {% endif %}
-    </div>
+<div class="topbar">
+  <div class="logo">
+    <img src="{% static 'core/img/eltotem_logo.png' %}" alt="El Totem Logo">
+    <h1>El Totem</h1>
   </div>
-
+  <div class="search-container">
+    <input type="text" placeholder="Buscar...">
+  </div>
   <div class="user-actions">
-<a href="{% url 'login' %}">Ingresar / Registrarse</a>
+    <a href="{% url 'login' %}">Ingresar / Registrarse</a>
     <a href="#">🛒 Carrito</a>
-    <!-- Panel Admin solo visible para admin en el futuro -->
     {% if user.is_staff %}
       <a href="#">⚙️ Panel Admin</a>
     {% endif %}
     <button id="toggle-modo" class="btn btn-sm btn-outline-warning">🌓 Cambiar modo</button>
   </div>
 </div>
+
 
 
   <header class="navbar">
