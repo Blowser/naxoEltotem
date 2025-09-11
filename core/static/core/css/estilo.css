@@ -8,6 +8,14 @@ body {
   margin: 0;
   padding: 0;
 }
+footer {
+  background-color: #fbeec1;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  color: #333;
+  box-shadow: 0 -0.0625rem 0.25rem rgba(0,0,0,0.1);
+}
 
 /* 🌞 Modo claro */
 body.modo-claro {
@@ -49,7 +57,11 @@ body.modo-oscuro {
 .modo-oscuro .nav-links a:hover {
   color: #ffd700;
 }
-
+.modo-oscuro footer {
+  background-color: #1a1a1a;
+  color: #ffdd00;
+  box-shadow: 0 -0.125rem 0.375rem rgba(255, 215, 0, 0.2);
+}
 /* 🔝 Topbar */
 .topbar {
   display: flex;
@@ -179,4 +191,9 @@ section h2 {
     margin: 0 auto;
     padding: 1.5rem;
   }
+ footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  } 
 }
+
