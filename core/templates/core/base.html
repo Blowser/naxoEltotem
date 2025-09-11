@@ -6,54 +6,52 @@
   <title>El Totem</title>
   <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
   {% block extra_css %}{% endblock %}
-
-
-  
 </head>
 <body>
 
-<div class="topbar">
+  <div class="topbar">
     <div class="logo">
-    <img src="{% static 'core/img/eltotem_logo.png' %}" alt="El Totem Logo">
-    <h1>El Totem</h1>
+      <img src="{% static 'core/img/eltotem_logo.png' %}" alt="El Totem Logo">
+      <h1>El Totem</h1>
     </div>
-  <div class="search-container">
-    <input type="text" placeholder="Buscar...">
+    <div class="search-container">
+      <input type="text" placeholder="Buscar...">
+    </div>
+    <div class="user-actions">
+      <a href="{% url 'login' %}">Ingresar / Registrarse</a>
+      <a href="#">🛒 Carrito</a>
+      {% if user.is_staff %}
+        <a href="#">⚙️ Panel Admin</a>
+      {% endif %}
+    </div>
   </div>
-  <div class="user-actions">
-<a href="{% url 'login' %}">Ingresar / Registrarse</a>
-    <a href="#">🛒 Carrito</a>
-    <!-- Panel Admin solo visible para admin en el futuro -->
-    {% if user.is_staff %}
-      <a href="#">⚙️ Panel Admin</a>
-    {% endif %}
-  </div>
-</div>
 
-<!-- 🧭 Barra de navegación principal -->
-<header class="navbar">
-
-  <nav class="nav-links">
-    <a href="{% url 'index' %}">Inicio</a>
-    <a href="#">Productos</a>
-    <a href="#">Accesorios</a>
-    <a href="#">Preventa</a>
-    <a href="#">Foro</a>
-    <a href="#">Noticias</a>
-    <a href="#">Únete</a>
-  </nav>
-</header>
+  <header class="navbar">
+    <nav class="nav-links">
+      <a href="{% url 'index' %}">Inicio</a>
+      <a href="#">Productos</a>
+      <a href="#">Accesorios</a>
+      <a href="#">Preventa</a>
+      <a href="#">Foro</a>
+      <a href="#">Noticias</a>
+      <a href="#">Únete</a>
+    </nav>
+  </header>
 
   <main>
-    {% block content %}
-    <!-- Aquí se insertará el contenido de cada página -->
-    {% endblock %}
+    {% block content %}{% endblock %}
   </main>
 
   <footer>
     <p>&copy; 2025 El Totem — Invoca tu rareza, conecta con tu clan.</p>
   </footer>
+
+  {% block extra_js %}
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-VvU2T9T+vpu3V8josHvTRpnWpTSe1eKkuZfUWeR3P4c="
+      crossorigin="anonymous"></script>
+    <script src="/static/core/js/validator.js"></script>
+  {% endblock %}
 </body>
 </html>
-
-
