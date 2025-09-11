@@ -3,56 +3,138 @@
 
 {% block content %}
 
-<section class="productos-flex">
+<section class="productos-flex container mt-4">
   <h2>🌀 Productos Totem</h2>
-  <div class="contenedor-cartas">
-    <div class="carta">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 1">
-      <p>Fornito Místico</p>
+  <div class="row">
+    <!-- Producto 1 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Producto 1">
+        <div class="card-body">
+          <p class="card-text">Nuevo producto 1</p>
+        </div>
+      </div>
     </div>
-    <div class="carta">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 2">
-      <p>Amuleto Solar</p>
+
+    <!-- Producto 2 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Producto 2">
+        <div class="card-body">
+          <p class="card-text">Nuevo producto 2</p>
+        </div>
+      </div>
     </div>
-    <div class="carta">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Carta 3">
-      <p>Sticker Totémico</p>
+
+    <!-- Producto 3 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Producto 3">
+        <div class="card-body">
+          <p class="card-text">Nuevo producto 3</p>
+        </div>
+      </div>
     </div>
+      <!-- Repetir para más productos -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Publicación 3">
+        <div class="card-body">
+          <p class="card-text"> Producto 4</p>
+        </div>
+      </div>
+    </div> 
   </div>
 </section>
 
-<section class="publicaciones-usuarios">
+
+
+
+<section class="publicaciones-usuarios container mt-5">
   <h2>🗣️ ÚLTIMAS PUBLICACIONES DE USUARIOS</h2>
-  <div class="grid">
-    <div class="post">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 1">
-      <p>“Cambio forrito lunar por solar”</p>
+  <div class="row">
+    <!-- Publicación 1 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Publicación 1">
+        <div class="card-body">
+          <p class="card-text">“Cambio forrito lunar por solar”</p>
+        </div>
+      </div>
     </div>
-    <div class="post">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 2">
-      <p>“¿Alguien tiene edición Fósil?”</p>
+
+    <!-- Publicación 2 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Publicación 2">
+        <div class="card-body">
+          <p class="card-text">“¿Alguien tiene edición Fósil?”</p>
+        </div>
+      </div>
     </div>
-    <div class="post">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Publicación 3">
-      <p>“Mi ritual de diseño Totem”</p>
+
+    <!-- Publicación 3 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Publicación 3">
+        <div class="card-body">
+          <p class="card-text">“Mi ritual de diseño Totem”</p>
+        </div>
+      </div>
+    </div>
+    <!-- Repetir para más publicaciones -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Publicación 3">
+        <div class="card-body">
+          <p class="card-text">“Publicacion 4”</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="noticias-destacadas">
+
+<section class="noticias-destacadas container mt-5">
   <h2>🔥 LO MÁS DESTACADO DEL MES</h2>
-  <div class="grid">
-    <div class="noticia">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 1">
-      <p>El Totem aparece en revista de diseño</p>
+  <div class="row">
+    <!-- Noticia 1 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Noticia 1">
+        <div class="card-body">
+          <p class="card-text">El Totem aparece en revista de diseño</p>
+        </div>
+      </div>
     </div>
-    <div class="noticia">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 2">
-      <p>Nuevo clan digital en desarrollo</p>
+
+    <!-- Noticia 2 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Noticia 2">
+        <div class="card-body">
+          <p class="card-text">Nuevo clan digital en desarrollo</p>
+        </div>
+      </div>
     </div>
-    <div class="noticia">
-      <img src="{% static 'core/img/carta1.webp' %}" alt="Noticia 3">
-      <p>Forrito edición limitada agotado</p>
+
+    <!-- Noticia 3 -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Noticia 3">
+        <div class="card-body">
+          <p class="card-text">Forrito edición limitada agotado</p>
+        </div>
+      </div>
+    </div>
+    <!-- Repetir para más noticias -->
+    <div class="col-12 col-sm-6 col-md-3 mb-4">
+      <div class="card h-100 text-center">
+        <img src="{% static 'core/img/carta1.webp' %}" class="card-img-top" alt="Noticia 3">
+        <div class="card-body">
+          <p class="card-text">Noticia 4</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
