@@ -55,7 +55,7 @@ def login_view(request):
 #AHORA SE IMPORTA EL VIEWLIST DE LAS NOTICIAS, LUEGO SE CREA LA CLASE PARA FILTRAR
 class NoticiasFiltradasView(ListView):
     model = NoticiaTCG
-    template_name = 'noticias.html'
+    template_name = 'core/noticias.html'
     context_object_name = 'noticias'
 
     def get_queryset(self):
