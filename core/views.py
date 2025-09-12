@@ -28,6 +28,40 @@ def index(request):
 
 # Ahora procedemos a hacer la view de registro:
 def registrarse_view(request):
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        username = request.POST['username']
+        nombre = request.POST['nombre']
+        apellido = request.POST['apellido']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        direccion = request.POST['direccion']
+        
+        # Validar que las contraseñas coincidan
+        if password1 != password2:
+            return render(request, 'core/registrarse.html', {
+                'error': 'Las contraseñas no coinciden'
+            })
+        
+        # Crear el usuario usando UserCreationForm
+        form = UserCreationForm({
+            'username': username,
+            'password1': password1,
+            'password2': password2,
+        })
+        
+        if form.is_valid():
+            user = form.save()
+            # Autenticar y hacer login automáticamente después del registro
+            login(request, user)
+            return redirect('index')  # Redirigir al index después del registro exitoso
+        else:
+            # Si hay errores en el formulario, mostrarlos
+            return render(request, 'core/registrarse.html', {
+                'error': 'Error en el formulario: ' + str(form.errors)
+            })
+    
     return render(request, 'core/registrarse.html')
 #Luego, procedemos a agregarlo al pattern en urls.py de la aplicación, en este caso, core
 
