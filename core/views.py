@@ -28,7 +28,7 @@ def index(request):
 
 # Ahora procedemos a hacer la view de registro:
 def registrarse_view(request):
-    return render(request, 'core/registro.html')
+    return render(request, 'core/registrarse.html')
 #Luego, procedemos a agregarlo al pattern en urls.py de la aplicación, en este caso, core
 
 #REPETIR para todas las templates, por ejemplo, login
