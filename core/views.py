@@ -18,6 +18,13 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 #@login_required: Solo permite acceder a la vista si el usuario está logueado.
 #@user_passes_test(lambda u: u.is_superuser):Solo permite acceso si el usuario cumple una condición (como ser admin).
 
+from django.views.generic import ListView
+#Una de las tantas vistas preconstruidas de django, está basada en clase y sirve para mostrar lista de objetos de un modelo
+#Seleccionamos cual modelo mostrar, qué plantilla usar, y cómo filtrar los datos.
+from .models import NoticiaTCG
+#importamos nuestro modelo personalizado para las noticias, así podemos consultar, fitlrar y mostrar
+#“Traéme las runas que definimos para las noticias, que vamos a mostrarlas al clan”.
+
 
 # CREACIÓN DE VISTAS
 def index(request):
@@ -43,3 +50,25 @@ def login_view(request):
         else:
             return render(request, 'core/login.html', {'error': 'Credenciales inválidas'})
     return render(request, 'core/login.html')
+
+
+#AHORA SE IMPORTA EL VIEWLIST DE LAS NOTICIAS, LUEGO SE CREA LA CLASE PARA FILTRAR
+class NoticiasFiltradasView(ListView):
+    model = NoticiaTCG
+    template_name = 'noticias.html'
+    context_object_name = 'noticias'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        juego = self.request.GET.get('juego')
+        tipo = self.request.GET.get('tipo_evento')
+        fecha = self.request.GET.get('fecha')
+
+        if juego:
+            qs = qs.filter(juego=juego)
+        if tipo:
+            qs = qs.filter(tipo_evento=tipo)
+        if fecha:
+            qs = qs.filter(fecha__gte=fecha)
+
+        return qs.order_by('-fecha')
