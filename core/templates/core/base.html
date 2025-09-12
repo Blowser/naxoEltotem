@@ -6,13 +6,14 @@
   <title>El Totem</title>
   <!-- Bootstrap primero -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery para validadores y scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Estilo general -->
+  <!-- Estilo general -->
   <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
   {% block extra_css %}{% endblock %}
 </head>
 <body class="modo-oscuro">
-
 
 <div class="topbar">
   <div class="logo">
@@ -32,33 +33,30 @@
   </div>
 </div>
 
+<header class="navbar">
+  <nav class="nav-links">
+    <a href="{% url 'index' %}">Inicio</a>
+    <a href="#">Productos</a>
+    <a href="#">Accesorios</a>
+    <a href="#">Preventa</a>
+    <a href="#">Foro</a>
+    <a href="#">Noticias</a>
+    <a href="#">Únete</a>
+  </nav>
+</header>
 
+<main>
+  {% block content %}{% endblock %}
+</main>
 
-  <header class="navbar">
-    <nav class="nav-links">
-      <a href="{% url 'index' %}">Inicio</a>
-      <a href="#">Productos</a>
-      <a href="#">Accesorios</a>
-      <a href="#">Preventa</a>
-      <a href="#">Foro</a>
-      <a href="#">Noticias</a>
-      <a href="#">Únete</a>
-    </nav>
-  </header>
+<footer>
+  <p>&copy; 2025 El Totem — Invoca tu rareza, conecta con tu clan.</p>
+</footer>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-
-  <footer>
-    <p>&copy; 2025 El Totem — Invoca tu rareza, conecta con tu clan.</p>
-  </footer>
-
-  <script>
+<script>
   const toggleBtn = document.getElementById('toggle-modo');
   const body = document.body;
 
-  // Cargar modo guardado
   const modoGuardado = localStorage.getItem('modo');
   if (modoGuardado) {
     body.classList.remove('modo-claro', 'modo-oscuro');
@@ -77,5 +75,7 @@
     }
   });
 </script>
+
+{% block extra_js %}{% endblock %}
 </body>
 </html>
