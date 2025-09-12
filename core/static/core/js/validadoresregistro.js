@@ -1,4 +1,5 @@
 // core/static/core/js/validadoresregistro.js
+console.log('Validador Totémico activo');
 
 (function($) {
   $(function() {
