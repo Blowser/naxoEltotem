@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Noticias del Clan</h1>
+
+  <!-- Filtros -->
+  <form method="get">
+    <!-- Tus select y date input van aquí -->
+    {{ form.as_p }} <!-- O directamente el HTML que ya escribiste -->
+    <button type="submit">Filtrar</button>
+  </form>
+
+  <!-- Resultados -->
+  <div class="noticias-lista">
+    {% for noticia in noticias %}
+      <div class="noticia-card">
+        <h2>{{ noticia.titulo }}</h2>
+        <p><strong>Juego:</strong> {{ noticia.get_juego_display }}</p>
+        <p><strong>Tipo de evento:</strong> {{ noticia.get_tipo_evento_display }}</p>
+        <p><strong>Fecha:</strong> {{ noticia.fecha }}</p>
+        <p>{{ noticia.resumen }}</p>
+        <a href="{{ noticia.fuente }}" target="_blank">Leer más</a>
+        {% if noticia.imagen %}
+          <img src="{{ noticia.imagen }}" alt="Imagen de la noticia">
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No se encontraron noticias con esos filtros.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
