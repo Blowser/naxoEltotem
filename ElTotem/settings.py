@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'eltotem_db',
         'USER': 'eltotem_user',
         'PASSWORD': 'ClaveTotem_2025!',
-        'HOST': 'localhost',  # o IP del servidor si es remoto
+        'HOST': '192.168.1.103',  # o IP del servidor local de naxo, conexion remota habilitada
         'PORT': '3306',
         'OPTIONS': {
             'charset': 'utf8mb4',
