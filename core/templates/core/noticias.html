@@ -1,50 +1,56 @@
 {% extends 'core/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/noticias.css' %}">
+{% endblock %}
 
 {% block content %}
-  <h1>Noticias del Clan</h1>
+<div class="container mt-4">
+  <h1 class="mb-4 text-center">Noticias del Clan</h1>
 
   <!-- Filtros -->
-<form method="GET" action="{% url 'noticias' %}">
-  <label for="juego">Juego:</label>
-  <select name="juego" id="juego">
-    <option value="">Todos</option>
-    <option value="pokemon">Pokémon</option>
-    <option value="yugioh">Yu-Gi-Oh!</option>
-    <option value="mitosyleyendas">Mitos y leyendas</option>
-  </select>
-
-  <label for="tipo_evento">Tipo de evento:</label>
-  <select name="tipo_evento" id="tipo_evento">
-    <option value="">Todos</option>
-    <option value="actualizacion">Actualización</option>
-    <option value="torneo">Torneo</option>
-    <option value="lanzamiento">Lanzamiento</option>
-  </select>
-
-  <label for="fecha">Desde fecha:</label>
-  <input type="date" name="fecha" id="fecha">
-
-  <button type="submit">Filtrar</button>
+<form method="GET" action="{% url 'noticias' %}" class="row row-cols-lg-auto g-2 align-items-end mb-4">
+  <div class="col">
+    <label for="juego" class="form-label">Juego:</label>
+    <select name="juego" id="juego" class="form-select">
+      <option value="">Todos</option>
+      <option value="pokemon">Pokémon</option>
+      <option value="yugioh">Yu-Gi-Oh!</option>
+      <option value="mitosyleyendas">Mitos y leyendas</option>
+    </select>
+  </div>
+  <div class="col">
+    <label for="fecha" class="form-label">Desde fecha:</label>
+    <input type="date" name="fecha" id="fecha" class="form-control">
+  </div>
+  <div class="col">
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+  </div>
 </form>
 
 
-
   <!-- Resultados -->
-  <div class="noticias-lista">
-    {% for noticia in noticias %}
-      <div class="noticia-card">
-        <h2>{{ noticia.titulo }}</h2>
-        <p><strong>Juego:</strong> {{ noticia.get_juego_display }}</p>
-        <p><strong>Tipo de evento:</strong> {{ noticia.get_tipo_evento_display }}</p>
-        <p><strong>Fecha:</strong> {{ noticia.fecha }}</p>
-        <p>{{ noticia.resumen }}</p>
-        <a href="{{ noticia.fuente }}" target="_blank">Leer más</a>
+ <div class="row">
+  {% for noticia in noticias %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow-sm noticia-card">
         {% if noticia.imagen %}
-          <img src="{{ noticia.imagen }}" alt="Imagen de la noticia">
+          <img src="{{ noticia.imagen }}" class="card-img-top" alt="Imagen de la noticia">
         {% endif %}
+        <div class="card-body p-3">
+          <h5 class="card-title mb-2">{{ noticia.titulo }}</h5>
+          <p class="card-text small text-muted">{{ noticia.fecha }}</p>
+          <p class="card-text">{{ noticia.resumen }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-0 text-end">
+          <a href="{{ noticia.fuente }}" target="_blank" class="btn btn-outline-primary btn-sm">Leer más</a>
+        </div>
       </div>
-    {% empty %}
-      <p>No se encontraron noticias con esos filtros.</p>
-    {% endfor %}
-  </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">No se encontraron noticias con esos filtros.</p>
+  {% endfor %}
+</div>
+
+</div>
 {% endblock %}
