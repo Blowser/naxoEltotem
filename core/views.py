@@ -25,6 +25,15 @@ from .models import NoticiaTCG
 #importamos nuestro modelo personalizado para las noticias, así podemos consultar, fitlrar y mostrar
 #“Traéme las runas que definimos para las noticias, que vamos a mostrarlas al clan”.
 
+#IMPORTES PARA SCRAPPING:
+import requests
+from bs4 import BeautifulSoup
+from datetime import datetime
+from core.models import NoticiaTCG
+from django.http import HttpResponse
+
+
+
 
 # CREACIÓN DE VISTAS
 def index(request):
@@ -106,3 +115,60 @@ class NoticiasFiltradasView(ListView):
             qs = qs.filter(fecha__gte=fecha)
 
         return qs.order_by('-fecha')
+#VISTAS PARA SCRAPPING:
+
+def parse_fecha(texto):
+    meses = {
+        'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4,
+        'mayo': 5, 'junio': 6, 'julio': 7, 'agosto': 8,
+        'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12
+    }
+    partes = texto.split()
+    dia = int(partes[0])
+    mes = meses[partes[1].lower()]
+    año = int(partes[2])
+    return datetime(año, mes, dia).date()
+
+def extraer_url_de_style(style):
+    inicio = style.find("url(") + 4
+    fin = style.find(")", inicio)
+    url_relativa = style[inicio:fin].strip("'\"")
+    return "https://www.yugioh-card.com" + url_relativa
+
+def scrap_yugioh(request):
+    url = "https://www.yugioh-card.com/eu/es/noticias/"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    noticias = soup.find_all('article', class_='news-tile')
+    print("Cantidad de noticias encontradas:", len(noticias))
+
+    for item in noticias:
+        titulo_tag = item.find('h2', class_='news-tile__heading')
+        resumen_tag = item.find('p', class_='news-tile__excerpt')
+        fecha_tag = item.find('p', class_='news-tile__date')
+        imagen_style = item.find('div', class_='news-tile__image')['style']
+        enlace_tag = item.find('a', class_='news-tile__link')
+
+        titulo = titulo_tag.text.strip() if titulo_tag else "Sin título"
+        resumen = resumen_tag.text.strip() if resumen_tag else "Sin resumen"
+        fecha = parse_fecha(fecha_tag.text.strip()) if fecha_tag else datetime.today().date()
+        fuente = "https://www.yugioh-card.com" + enlace_tag['href'] if enlace_tag else url
+        imagen = extraer_url_de_style(imagen_style) if imagen_style else None
+
+        obj, creado = NoticiaTCG.objects.get_or_create(
+    fuente=fuente,
+    defaults={
+        'titulo': titulo,
+        'resumen': resumen,
+        'fecha': fecha,
+        'juego': 'yugioh',
+        'tipo_evento': "actualizacion",
+        'imagen': imagen
+    }
+)
+
+
+        print("Noticia guardada:", titulo)
+
+    return HttpResponse("Scraping de Yu-Gi-Oh completado.")
