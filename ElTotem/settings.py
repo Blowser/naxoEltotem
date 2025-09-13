@@ -77,15 +77,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eltotem_db',
-        'USER': 'naxo_eltotem',
-        'PASSWORD': 'RitualClave_2025!',
-        'HOST': 'localhost',
+        'USER': 'eltotem_user',
+        'PASSWORD': 'ClaveTotem_2025!',
+        'HOST': 'localhost',  # o IP del servidor si es remoto
         'PORT': '3306',
         'OPTIONS': {
             'charset': 'utf8mb4',
         },
     }
 }
+
 
 
 
