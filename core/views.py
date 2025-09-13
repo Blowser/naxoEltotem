@@ -227,6 +227,39 @@ def scrap_tcg(request):
             }
         )
         print("Pokeguardian:", "Guardada" if creado else "Ya existía", titulo)
+    # 🔹 Mitos y Leyendas
+    url_myl = "https://casamyl.cl/blogs/myl"
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    response_myl = requests.get(url_myl, headers=headers)
+    soup_myl = BeautifulSoup(response_myl.text, 'html.parser')
+    noticias_myl = soup_myl.find_all('li', class_='grid__item')
+    print("Noticias Mitos y Leyendas encontradas:", len(noticias_myl))
+
+    for item in noticias_myl:
+        enlace_tag = item.find('a', class_='article__link')
+        titulo_tag = item.find('h2', class_='article__title')
+        resumen_tag = item.find('div', class_='rte article__grid-excerpt')
+        fecha_tag = item.find('time')
+        imagen_tag = item.find('img')
+
+        titulo = titulo_tag.text.strip() if titulo_tag else "Sin título"
+        resumen = resumen_tag.text.strip() if resumen_tag else "Sin resumen"
+        fecha = datetime.strptime(fecha_tag['datetime'][:10], "%Y-%m-%d").date() if fecha_tag else datetime.today().date()
+        fuente = "https://casamyl.cl" + enlace_tag['href'] if enlace_tag else url_myl
+        imagen = "https:" + imagen_tag['src'] if imagen_tag and 'src' in imagen_tag.attrs else None
+
+        obj, creado = NoticiaTCG.objects.get_or_create(
+            fuente=fuente,
+            defaults={
+                'titulo': titulo,
+                'resumen': resumen,
+                'fecha': fecha,
+                'juego': 'Mitos y leyendas',
+                'tipo_evento': "actualizacion",
+                'imagen': imagen
+            }
+        )
+        print("Mitos y Leyendas:", "Guardada" if creado else "Ya existía", titulo)
 
     return HttpResponse("Scraping combinado de TCG completado.")
 
