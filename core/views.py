@@ -115,7 +115,13 @@ class NoticiasFiltradasView(ListView):
             qs = qs.filter(fecha__gte=fecha)
 
         return qs.order_by('-fecha')
-#VISTAS PARA SCRAPPING:
+# VISTAS PARA SCRAPPING:
+
+from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
+from django.http import HttpResponse
+from .models import NoticiaTCG
 
 def parse_fecha(texto):
     meses = {
@@ -135,15 +141,26 @@ def extraer_url_de_style(style):
     url_relativa = style[inicio:fin].strip("'\"")
     return "https://www.yugioh-card.com" + url_relativa
 
-def scrap_yugioh(request):
-    url = "https://www.yugioh-card.com/eu/es/noticias/"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
+def obtener_fecha_desde_articulo(url):
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        fecha_tag = soup.find('p', class_='date')  # Ajustar si cambia
+        if fecha_tag:
+            return datetime.strptime(fecha_tag.text.strip(), "%B %d, %Y").date()
+    except Exception as e:
+        print("Error al obtener fecha:", e)
+    return datetime.today().date()
 
-    noticias = soup.find_all('article', class_='news-tile')
-    print("Cantidad de noticias encontradas:", len(noticias))
+def scrap_tcg(request):
+    # 🔹 Yu-Gi-Oh!
+    url_yugi = "https://www.yugioh-card.com/eu/es/noticias/"
+    response_yugi = requests.get(url_yugi)
+    soup_yugi = BeautifulSoup(response_yugi.text, 'html.parser')
+    noticias_yugi = soup_yugi.find_all('article', class_='news-tile')
+    print("Noticias Yu-Gi-Oh encontradas:", len(noticias_yugi))
 
-    for item in noticias:
+    for item in noticias_yugi:
         titulo_tag = item.find('h2', class_='news-tile__heading')
         resumen_tag = item.find('p', class_='news-tile__excerpt')
         fecha_tag = item.find('p', class_='news-tile__date')
@@ -153,22 +170,65 @@ def scrap_yugioh(request):
         titulo = titulo_tag.text.strip() if titulo_tag else "Sin título"
         resumen = resumen_tag.text.strip() if resumen_tag else "Sin resumen"
         fecha = parse_fecha(fecha_tag.text.strip()) if fecha_tag else datetime.today().date()
-        fuente = "https://www.yugioh-card.com" + enlace_tag['href'] if enlace_tag else url
+        fuente = "https://www.yugioh-card.com" + enlace_tag['href'] if enlace_tag else url_yugi
         imagen = extraer_url_de_style(imagen_style) if imagen_style else None
 
         obj, creado = NoticiaTCG.objects.get_or_create(
-    fuente=fuente,
-    defaults={
-        'titulo': titulo,
-        'resumen': resumen,
-        'fecha': fecha,
-        'juego': 'yugioh',
-        'tipo_evento': "actualizacion",
-        'imagen': imagen
-    }
-)
+            fuente=fuente,
+            defaults={
+                'titulo': titulo,
+                'resumen': resumen,
+                'fecha': fecha,
+                'juego': 'yugioh',
+                'tipo_evento': "actualizacion",
+                'imagen': imagen
+            }
+        )
+        print("Yu-Gi-Oh:", "Guardada" if creado else "Ya existía", titulo)
+
+    # 🔹 Pokeguardian (fuente alternativa Pokémon TCG)
+    url_pg = "https://www.pokeguardian.com/"
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    response_pg = requests.get(url_pg, headers=headers)
+    soup_pg = BeautifulSoup(response_pg.text, 'html.parser')
+    noticias_pg = soup_pg.find_all('article', class_='jw-news-post')
+    print("Noticias Pokeguardian encontradas:", len(noticias_pg))
+
+    for item in noticias_pg:
+        titulo_tag = item.find('h2', class_='jw-news-post__title')
+        resumen_tag = item.find('div', class_='jw-news-post__lead')
+        fecha_tag = item.find('span', class_='jw-news-date')
+        enlace_tag = item.find('a', class_='jw-news-color-heading')
+        imagen_style = item.find('div', style=lambda s: s and 'background-image' in s)
+
+        titulo = titulo_tag.text.strip() if titulo_tag else "Sin título"
+        resumen = resumen_tag.text.strip() if resumen_tag else "Sin resumen"
+        try:
+            fecha = datetime.strptime(fecha_tag.text.strip(), "%d %b %Y").date() if fecha_tag else datetime.today().date()
+        except:
+            fecha = datetime.today().date()
+        fuente = "https://www.pokeguardian.com" + enlace_tag['href'] if enlace_tag else url_pg
+        imagen = None
+        if imagen_style:
+            style = imagen_style['style']
+            inicio = style.find("url(") + 4
+            fin = style.find(")", inicio)
+            imagen = style[inicio:fin].strip("'\"")
+
+        obj, creado = NoticiaTCG.objects.get_or_create(
+            fuente=fuente,
+            defaults={
+                'titulo': titulo,
+                'resumen': resumen,
+                'fecha': fecha,
+                'juego': 'pokemon',
+                'tipo_evento': "actualizacion",
+                'imagen': imagen
+            }
+        )
+        print("Pokeguardian:", "Guardada" if creado else "Ya existía", titulo)
+
+    return HttpResponse("Scraping combinado de TCG completado.")
 
 
-        print("Noticia guardada:", titulo)
-
-    return HttpResponse("Scraping de Yu-Gi-Oh completado.")
+    
