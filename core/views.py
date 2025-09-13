@@ -254,7 +254,7 @@ def scrap_tcg(request):
                 'titulo': titulo,
                 'resumen': resumen,
                 'fecha': fecha,
-                'juego': 'Mitos y leyendas',
+                'juego': 'mitosyleyendas',
                 'tipo_evento': "actualizacion",
                 'imagen': imagen
             }
