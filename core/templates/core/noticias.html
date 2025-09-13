@@ -4,11 +4,30 @@
   <h1>Noticias del Clan</h1>
 
   <!-- Filtros -->
-  <form method="get">
-    <!-- Tus select y date input van aquí -->
-    {{ form.as_p }} <!-- O directamente el HTML que ya escribiste -->
-    <button type="submit">Filtrar</button>
-  </form>
+<form method="GET" action="{% url 'noticias' %}">
+  <label for="juego">Juego:</label>
+  <select name="juego" id="juego">
+    <option value="">Todos</option>
+    <option value="pokemon">Pokémon</option>
+    <option value="yugioh">Yu-Gi-Oh!</option>
+    <option value="mitosyleyendas">Mitos y leyendas</option>
+  </select>
+
+  <label for="tipo_evento">Tipo de evento:</label>
+  <select name="tipo_evento" id="tipo_evento">
+    <option value="">Todos</option>
+    <option value="actualizacion">Actualización</option>
+    <option value="torneo">Torneo</option>
+    <option value="lanzamiento">Lanzamiento</option>
+  </select>
+
+  <label for="fecha">Desde fecha:</label>
+  <input type="date" name="fecha" id="fecha">
+
+  <button type="submit">Filtrar</button>
+</form>
+
+
 
   <!-- Resultados -->
   <div class="noticias-lista">
