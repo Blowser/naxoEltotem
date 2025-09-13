@@ -24,7 +24,7 @@
     <input type="text" placeholder="Buscar...">
   </div>
   <div class="user-actions">
-    <a href="{% url 'login' %}">Ingresar / Registrarse</a>
+    <a href="{% url 'login' %}">Ingresar</a>
     <a href="#">🛒 Carrito</a>
     {% if user.is_staff %}
       <a href="#">⚙️ Panel Admin</a>
@@ -42,6 +42,7 @@
     <a href="#">Foro</a>
     <a href="{% url 'noticias' %}">Noticias</a>
     <a href="#">Únete</a>
+
   </nav>
 </header>
 
