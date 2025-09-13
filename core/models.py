@@ -10,7 +10,7 @@ class NoticiaTCG(models.Model):
     juego = models.CharField(max_length=50, choices=[
         ('pokemon', 'Pokémon TCG'),
         ('yugioh', 'Yu-Gi-Oh!'),
-        ('mitos', 'Mitos y Leyendas'),
+        ('mitosyleyendas', 'Mitos y Leyendas'),
         ('otros', 'Otros')
     ])
     tipo_evento = models.CharField(max_length=50, choices=[
