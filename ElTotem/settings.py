@@ -76,16 +76,14 @@ WSGI_APPLICATION = 'ElTotem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eltotem_db',
-        'USER': 'eltotem_user',
-        'PASSWORD': 'ClaveTotem_2025!',
-        'HOST': '192.168.1.103',  # o IP del servidor local de naxo, conexion remota habilitada
+        'HOST': 'containers.railway.app',
         'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'NDk1vevBx1vCPent6OcX1i3RrREdWnWb',
     }
 }
+
 
 
 
