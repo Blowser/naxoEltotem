@@ -6,6 +6,7 @@
   "deploy": {
     "runtime": "v2",
     "numReplicas": 1,
+    "releaseCommand": "python manage.py migrate --noinput",
     "startCommand": "python manage.py collectstatic --noinput && gunicorn ElTotem.wsgi --bind 0.0.0.0:$PORT",
     "sleepApplication": false,
     "useLegacyStacker": false,
